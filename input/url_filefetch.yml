@@ -1,0 +1,108 @@
+header(example):
+    description: info on data getting
+    website: parent website (for reference)
+    file_url: url to file
+    file_type: e.g., csv, txt, html-stream
+    key_phrase: for html-stream, findlink(s), csv-git-scan; leave blank otherwise
+rt_live:
+  description: transmission rate data
+  website: https://rt.live/
+  file_url: https://d14wlfuexuxgcm.cloudfront.net/covid/rt.csv
+  file_type: csv
+  key_phrase:
+test_and_trace:
+  description: tracing data
+  website: https://testandtrace.com/state-data/
+  file_url: https://datawrapper.dwcdn.net/owNad/3/
+  file_type: html-stream
+  key_phrase: data:application/octet-stream;charset=utf-8,
+hhs_icu:
+    description: ICU and std hospital bed usage
+    website: https://healthdata.gov/
+    file_url: https://healthdata.gov/dataset/covid-19-estimated-patient-impact-and-hospital-capacity-state
+    file_type: findlinks
+    key_phrase: {"tag":"ul","search":{"class":"resource-list"},"ftype":"csv","nested":"yes"}
+covid_tracking_proj_race:
+    description: testing and data by race
+    website: https://covidtracking.com/
+    file_url: https://covidtracking.com/race/dashboard
+    file_type: findlink
+    key_phrase: {"tag":"main","search":{"id":"main"},"ftype":"csv","nested":"yes"}
+covid_tracking_proj_hist:
+    description: testing history results by state
+    website: https://covidtracking.com/
+    file_url: https://api.covidtracking.com/v1/states/daily.csv
+    file_type: csv
+    key_phrase:
+minnesota:
+    description: mdh weekly status report on covid
+    website: https://www.health.state.mn.us/diseases/coronavirus/index.html
+    file_url: https://www.health.state.mn.us/diseases/coronavirus/stats/index.html
+    file_type: findlink
+    key_phrase: {"tag":"div","search":{"class":"well"},"ftype":"pdf","nested":"yes"}
+california:
+    description: california weekly (Tues) county data chart with positivity and case rate
+    website: https://covid19.ca.gov/safer-economy/;https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/Immunization/ncov2019.aspx#
+    file_url: https://www.cdph.ca.gov/Programs/CID/DCDC/Pages/COVID-19/COVID19CountyMonitoringOverview.aspx
+    file_type: findlink
+    key_phrase: {"tag":"a","search":{"title":"California Blueprint Data Chart"},"ftype":"xlsx","nested":"no"}
+virginia:
+  description: vdh health district covid data
+  website: https://www.vdh.virginia.gov/coronavirus/
+  file_url: https://data.virginia.gov/api/views/3u5k-c2gr/rows.csv?accessType=DOWNLOAD
+  file_type: csv
+  key_phrase:
+texas-test:
+  description: texas county test data over time
+  website: https://dshs.texas.gov/coronavirus/AdditionalData.aspx
+  file_url: https://dshs.texas.gov/coronavirus/TexasCOVID-19CumulativeTestsbyCounty.xlsx
+  file_type:
+  key_phrase:
+texas-case:
+  description: texas county case data over time
+  website: https://dshs.texas.gov/coronavirus/AdditionalData.aspx
+  file_url: https://dshs.texas.gov/coronavirus/TexasCOVID19DailyCountyCaseCountData.xlsx
+  file_type:
+  key_phrase:
+covid_act_now:
+  description: county level data from Covid Act Now Org (API)
+  website: https://covidactnow.org/?s=1089242
+  file_url: https://api.covidactnow.org/v2/counties.csv?apiKey=d794108934a742ec99983253c4fed886
+  file_type: csv
+  key_phrase:
+covid_exit_strat_testing:
+    description: pct of test target made & positivity 14 day rolling trend (how states doing on testing)
+    website: https://www.covidexitstrategy.org/
+    file_url: https://datawrapper.dwcdn.net/K39sA/8/
+    file_type: html-stream
+    key_phrase: data:application/octet-stream;charset=utf-8,
+covid_exit_strat_healthcare:
+    description: ICUs & beds occupied, new cases per mil/day, hospitlizations, fatalities (state of health care system)
+    website: https://www.covidexitstrategy.org/
+    file_url: https://datawrapper.dwcdn.net/m6SVi/4/
+    file_type: html-stream
+    key_phrase: data:application/octet-stream;charset=utf-8,
+covid_exit_strat_spread:
+    description: 14-day change, ILI, RT range, doubling time (how disease is spreading)
+    website: https://www.covidexitstrategy.org/
+    file_url: https://datawrapper.dwcdn.net/kuGFt/5/
+    file_type: html-stream
+    key_phrase: data:application/octet-stream;charset=utf-8,
+COVID19StatePolicy:
+    description: state-level social distancing policies
+    website: https://github.com/COVID19StatePolicy/SocialDistancing
+    file_url: https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicyBETA.csv
+    file_type: csv
+    key_phrase:
+kff:
+    description: State Social Distancing Actions
+    website: https://www.kff.org/coronavirus-covid-19/issue-brief/state-data-and-policy-actions-to-address-coronavirus/
+    file_url: https://github.com/KFFData/COVID-19-Data/tree/kff_master/State%20Policy%20Actions/State%20Social%20Distancing%20Actions
+    file_type: csv-git-scan
+    key_phrase: {"pattern":"\\d{4}-\\d{2}-\\d{2}", "last_date":"2020-08-31"}
+cmu:
+  description: CovidCast survey data maintained by CMU' Delphi Research Group
+  website: https://cmu-delphi.github.io/delphi-epidata/api/covidcast.html
+  file_url: https://api.covidcast.cmu.edu/epidata/api.php?source=covidcast&data_source=fb-survey&signal=raw_cli&time_type=day&geo_type=county&time_values=20201010&geo_value=*
+  file_type: json
+  key_phrase: {"keys":["result","epidata"],"attempts":3,"validator":"covidcast"}

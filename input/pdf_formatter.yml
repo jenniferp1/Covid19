@@ -1,0 +1,8 @@
+url_key (example):
+  description: info on what section is
+  notes: (optional) any additional notes on use, may leave blank
+  function: name of function to use for formatting for given url_key
+https://www.health.state.mn.us/diseases/coronavirus/stats/index.html:
+  description: Minnesota Department of Health positivty data for counties
+  notes: the second argument in function is page or pages to be paresed, e.g., 1 or 1,2,3
+  function: dframe = call_parse_mn_weekly_report(pdf_name, txt, 7)
